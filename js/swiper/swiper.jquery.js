@@ -220,6 +220,68 @@
         
         // Classname
         s.classNames = [];
+
+        /*=========================
+          улучшаем почти идеальный плагин
+          added breakpoints
+          ===========================*/
+        function isEmptyObj(obj) {
+            for(var prop in obj) {
+                if(obj.hasOwnProperty(prop))
+                    return false;
+            }
+            return true;
+        }
+        s.calculateSlidesPerView = function (breakpointsInner) {
+          if ( typeof breakpointsInner === 'undefined' || isEmptyObj(breakpointsInner)) return false;
+
+          var numberOfSlides = false,
+              i = 0,
+              firstBreakPoint = false;
+
+          for ( var point in breakpointsInner ){
+            ( i === 0 ) ? firstBreakPoint = point : "" ;    
+            if(point <= getPageWidth()) {
+              numberOfSlides = point;
+            }
+            i++;
+          }
+          return numberOfSlides ? breakpointsInner[numberOfSlides] : breakpointsInner[firstBreakPoint];
+        }
+        window.getPageWidth = function() {
+            var windowObject = window,
+                e;
+            if (windowObject.innerWidth) {
+                e = windowObject.innerWidth;
+            } else if (document.documentElement && document.documentElement.clientWidth) {
+                e = document.documentElement.clientWidth;
+            } else if (document.body) {
+                e = document.body.clientWidth;
+            }
+            return e;
+        };
+
+        var realSlidesPerview = s.calculateSlidesPerView(s.params.breakpoints);
+        if(realSlidesPerview){
+            s.params.slidesPerView = realSlidesPerview;
+
+            var ifResized = true;
+            setInterval(function() {
+              if (ifResized) {
+                realSlidesPerview = s.calculateSlidesPerView(s.params.breakpoints);
+                if(s.params.slidesPerView !== s.calculateSlidesPerView(s.params.breakpoints)) {
+                    s.params.slidesPerView = s.calculateSlidesPerView(s.params.breakpoints);
+                    s.update();
+                }
+              }
+            ifResized = false;
+            }, 300);
+            window.addEventListener("resize", function() {
+                ifResized = true;
+            });    
+        }
+        
+
         /*=========================
           Dom Library and plugins
           ===========================*/
@@ -3352,17 +3414,17 @@
      ===========================*/
     var swiperDomPlugins = ['jQuery', 'Zepto', 'Dom7'];
     for (var i = 0; i < swiperDomPlugins.length; i++) {
-    	if (window[swiperDomPlugins[i]]) {
-    		addLibraryPlugin(window[swiperDomPlugins[i]]);
-    	}
+        if (window[swiperDomPlugins[i]]) {
+            addLibraryPlugin(window[swiperDomPlugins[i]]);
+        }
     }
     // Required DOM Plugins
     var domLib;
     if (typeof Dom7 === 'undefined') {
-    	domLib = window.Dom7 || window.Zepto || window.jQuery;
+        domLib = window.Dom7 || window.Zepto || window.jQuery;
     }
     else {
-    	domLib = Dom7;
+        domLib = Dom7;
     }
 
     /*===========================
