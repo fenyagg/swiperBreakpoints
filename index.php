@@ -31,10 +31,15 @@
 
         <div class="container">
             <!-- Slider main container -->
-            <div class="swiper-container">
+            <div class="swiper-container swiper1">
                 <!-- Additional required wrapper -->
                 <div class="swiper-wrapper">
                     <!-- Slides -->
+                    <div class="swiper-slide"><img src="http://placehold.it/350x150"></div>
+                    <div class="swiper-slide"><img src="http://placehold.it/350x150"></div>
+                    <div class="swiper-slide"><img src="http://placehold.it/350x150"></div>
+                    <div class="swiper-slide"><img src="http://placehold.it/350x150"></div>
+                    <div class="swiper-slide"><img src="http://placehold.it/350x150"></div>
                     <div class="swiper-slide"><img src="http://placehold.it/350x150"></div>
                     <div class="swiper-slide"><img src="http://placehold.it/350x150"></div>
                     <div class="swiper-slide"><img src="http://placehold.it/350x150"></div>
@@ -51,8 +56,8 @@
                 <div class="swiper-scrollbar"></div>
             </div><!-- .swiper-container -->
             <script>
-                /*$(function() {
-                    var mySwiper = new Swiper ('.swiper-container', {
+                $(function() {
+                    var mySwiper = new Swiper ('.swiper1', {
                         // Optional parameters            
                         autoplay: false,        
                         freeMode: false,        //не фиксированная позиция слайдов
@@ -60,17 +65,85 @@
                         spaceBetween: 20,        //расстояние между слайдами 
             
                         // If we need pagination
-                        pagination: '.swiper-pagination',
+                        pagination: '.swiper1 .swiper-pagination',
             
                         // Navigation arrows
-                        nextButton: '.swiper-button-next',
-                        prevButton: '.swiper-button-prev',
+                        nextButton: '.swiper1 .swiper-button-next',
+                        prevButton: '.swiper1 .swiper-button-prev',
             
                         // And if we need scrollbar
-                        scrollbar: '.swiper-scrollbar',
+                        scrollbar: '.swiper1 .swiper-scrollbar',
+
+                        breakpoints: {
+                            320: 2,
+                            480: 3,
+                            768: 4,
+                            1024: 5,
+                            1200: 6,
+                        },
                     });   
-                });*/
+                });
             </script>
+
+    
+            <br>
+            <br>
+            <br>
+             <!-- Slider main container -->
+            <div class="swiper-container swiper2">
+                <!-- Additional required wrapper -->
+                <div class="swiper-wrapper">
+                    <!-- Slides -->
+                    <div class="swiper-slide"><img src="http://placehold.it/350x150"></div>
+                    <div class="swiper-slide"><img src="http://placehold.it/350x150"></div>
+                    <div class="swiper-slide"><img src="http://placehold.it/350x150"></div>
+                    <div class="swiper-slide"><img src="http://placehold.it/350x150"></div>
+                    <div class="swiper-slide"><img src="http://placehold.it/350x150"></div>
+                    <div class="swiper-slide"><img src="http://placehold.it/350x150"></div>
+                    <div class="swiper-slide"><img src="http://placehold.it/350x150"></div>
+                    <div class="swiper-slide"><img src="http://placehold.it/350x150"></div>
+                    <div class="swiper-slide"><img src="http://placehold.it/350x150"></div>
+                </div>
+                <!-- If we need pagination -->
+                <div class="swiper-pagination"></div>
+                
+                <!-- If we need navigation buttons -->
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+                
+                <!-- If we need scrollbar -->
+                <div class="swiper-scrollbar"></div>
+            </div><!-- .swiper-container -->
+            <script>
+                $(function() {
+                    var mySwiper = new Swiper ('.swiper2', {
+                        // Optional parameters            
+                        autoplay: false,        
+                        freeMode: false,        //не фиксированная позиция слайдов
+                        slidesPerView: 3,         //количество слайдов или "auto"
+                        spaceBetween: 20,        //расстояние между слайдами 
+            
+                        // If we need pagination
+                        pagination: '.swiper2 .swiper-pagination',
+            
+                        // Navigation arrows
+                        nextButton: '.swiper2 .swiper-button-next',
+                        prevButton: '.swiper2 .swiper-button-prev',
+            
+                        // And if we need scrollbar
+                        scrollbar: '.swiper2 .swiper-scrollbar',
+
+                        breakpoints: {
+                            320: 3,
+                            480: 3,
+                            768: 4,
+                            1024: 4,
+                            1200: 7,
+                        },
+                    });   
+                });
+            </script>
+            
             
 
         </div>
