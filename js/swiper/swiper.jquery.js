@@ -222,8 +222,7 @@
         s.classNames = [];
 
         /*=========================
-          улучшаем почти идеальный плагин
-          added breakpoints
+          add breakpoints
           ===========================*/
         function isEmptyObj(obj) {
             for(var prop in obj) {
@@ -271,12 +270,16 @@
 
             var ifResized = true;
             setInterval(function() {
-              if (ifResized) {
+              if ( ifResized ) {
                 activeBreakpoint = s.getActiveBreakpoint(s.params.breakpoints);
+                var anyParamChanged = false;
                 for( var param in s.params.breakpoints[activeBreakpoint] ) {
-                    s.params[param] = s.params.breakpoints[activeBreakpoint][param];
-                    s.update();
+                    if(s.params[param] != s.params.breakpoints[activeBreakpoint][param]){
+                        s.params[param] = s.params.breakpoints[activeBreakpoint][param];
+                        anyParamChanged = 1;
+                    }                                        
                 }
+                if ( anyParamChanged ) s.update();
               }
             ifResized = false;
             }, 300);
