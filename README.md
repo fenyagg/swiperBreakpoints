@@ -1,5 +1,5 @@
 # swiperBreakpoints
-Добавлен параметр breakpoints и исправлены баги при первой загрузке.
+Добавлен параметр <b>breakpoints</b> и исправлены баги при первой загрузке.
 breakpoints на каждый размер содержки объект из параметров для этой ширины.
 
 Пример использования нового параметра:
@@ -11,9 +11,7 @@ $(function() {
     var mySwiper = new Swiper ('.swiper-container', {
         // Optional parameters          
         autoplay: false,        
-        freeMode: false,        //не фиксированная позиция слайдов
-        slidesPerView: 3,       //количество слайдов или "auto"
-        spaceBetween: 20,       //расстояние между слайдами 
+        freeMode: false,
 
         // If we need pagination
         pagination: '.swiper-pagination',
@@ -25,6 +23,7 @@ $(function() {
         // And if we need scrollbar
         scrollbar: '.swiper-scrollbar',
         
+        //object params for each breakpoint
         breakpoints: {
     	  	320: {
     	  		slidesPerView: 1
