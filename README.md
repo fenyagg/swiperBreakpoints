@@ -5,7 +5,7 @@ breakpoints на каждый размер содержки объект из п
 Пример использования нового параметра:
 
 
-script
+script.js:
 ```js
 $(function() {
     var mySwiper = new Swiper ('.swiper-container', {
@@ -45,6 +45,7 @@ $(function() {
     });   
 });
 ```
+html:
 ```html
 <!-- Slider main container -->
 <div class="swiper-container">
