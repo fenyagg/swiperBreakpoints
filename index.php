@@ -17,9 +17,8 @@
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
 
-        <script src="js/swiper/swiper.jquery.js"></script>
+        <script src="js/swiper/swiperBP.jquery.js"></script>
         <link rel="stylesheet" href="js/swiper/swiper.css">
-        <script src="js/swiperBreakpoints.js"></script>
 
         <script src="js/plugins.js"></script>
         <script src="js/main.js"></script>
@@ -83,7 +82,7 @@
                             },
                             768: {
                                 slidesPerView: 4,
-                                spaceBetween: 150,
+                                spaceBetween: 10,
                             },
                             1024: {
                                 slidesPerView: 5,

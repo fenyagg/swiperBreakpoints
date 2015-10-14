@@ -268,7 +268,7 @@
                 s.params[param] = s.params.breakpoints[activeBreakpoint][param];
             }
 
-            var ifResized = true;
+            var ifResized = false;
             setInterval(function() {
               if ( ifResized ) {
                 activeBreakpoint = s.getActiveBreakpoint(s.params.breakpoints);
