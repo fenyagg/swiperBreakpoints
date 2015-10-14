@@ -1,5 +1,5 @@
 # swiperBreakpoints
-Добавлен параметр <b>breakpoints</b>.<br> 
+Добавлен параметр <b>breakpoints</b> в плагин <a href="http://www.idangero.us/swiper/">swiper.js</a>.<br> 
 На каждую ширину экрана плагин применяет свои параметры.
 
 Пример использования нового параметра:
@@ -26,19 +26,24 @@ $(function() {
         //object params for each breakpoint
         breakpoints: {
     	  	320: {
-    	  		slidesPerView: 1
+    	  		slidesPerView: 1,
+                spaceBetween: 10
     	  	},
     	  	480: {
-    	  		slidesPerView: 2
+    	  		slidesPerView: 2,
+                spaceBetween: 10
     	  	},
     	  	768: {
-    	  		slidesPerView: 3
+    	  		slidesPerView: 3,
+                spaceBetween: 20
     	  	},
     	  	992: {
-    	  		slidesPerView: 4
+    	  		slidesPerView: 4,
+                spaceBetween: 20
     	  	},
     	  	1280: {
-    	  		slidesPerView: 5
+    	  		slidesPerView: 5,
+                spaceBetween: 20
     	  	}
         }
     });   
