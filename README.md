@@ -5,7 +5,7 @@ breakpoints на каждый размер содержки объект из п
 Пример использования нового параметра:
 <code>
 <pre>
-<script>
+"<script>
     $(function() {
         var mySwiper = new Swiper ('.swiper-container', {
             // Optional parameters          
@@ -66,6 +66,6 @@ breakpoints на каждый размер содержки объект из п
     <!-- If we need scrollbar -->
     <div class="swiper-scrollbar"></div>
 </div><!-- .swiper-container -->
-
+"
 </pre>
 </code>
