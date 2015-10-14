@@ -232,21 +232,22 @@
             }
             return true;
         }
-        s.calculateSlidesPerView = function (breakpointsInner) {
+        //get breakpoint for window width
+        s.getActiveBreakpoint = function (breakpointsInner) {
           if ( typeof breakpointsInner === 'undefined' || isEmptyObj(breakpointsInner)) return false;
 
-          var numberOfSlides = false,
+          var bpForWidth = false,
               i = 0,
-              firstBreakPoint = false;
+              firstBP = false;
 
           for ( var point in breakpointsInner ){
-            ( i === 0 ) ? firstBreakPoint = point : "" ;    
+            ( i === 0 ) ? firstBP = point : "" ;    
             if(point <= getPageWidth()) {
-              numberOfSlides = point;
+              bpForWidth = point;
             }
             i++;
           }
-          return numberOfSlides ? breakpointsInner[numberOfSlides] : breakpointsInner[firstBreakPoint];
+          return bpForWidth ? bpForWidth : firstBP;
         }
         window.getPageWidth = function() {
             var windowObject = window,
@@ -261,16 +262,19 @@
             return e;
         };
 
-        var realSlidesPerview = s.calculateSlidesPerView(s.params.breakpoints);
-        if(realSlidesPerview){
-            s.params.slidesPerView = realSlidesPerview;
+        var activeBreakpoint = s.getActiveBreakpoint(s.params.breakpoints);
+        if(activeBreakpoint){
+
+            for( var param in s.params.breakpoints[activeBreakpoint] ) {
+                s.params[param] = s.params.breakpoints[activeBreakpoint][param];
+            }
 
             var ifResized = true;
             setInterval(function() {
               if (ifResized) {
-                realSlidesPerview = s.calculateSlidesPerView(s.params.breakpoints);
-                if(s.params.slidesPerView !== s.calculateSlidesPerView(s.params.breakpoints)) {
-                    s.params.slidesPerView = s.calculateSlidesPerView(s.params.breakpoints);
+                activeBreakpoint = s.getActiveBreakpoint(s.params.breakpoints);
+                for( var param in s.params.breakpoints[activeBreakpoint] ) {
+                    s.params[param] = s.params.breakpoints[activeBreakpoint][param];
                     s.update();
                 }
               }
@@ -278,7 +282,7 @@
             }, 300);
             window.addEventListener("resize", function() {
                 ifResized = true;
-            });    
+            });
         }
         
 

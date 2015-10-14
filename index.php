@@ -75,11 +75,24 @@
                         scrollbar: '.swiper1 .swiper-scrollbar',
 
                         breakpoints: {
-                            320: 2,
-                            480: 3,
-                            768: 4,
-                            1024: 5,
-                            1200: 6,
+                            320: {
+                                slidesPerView: 2
+                            },
+                            480: {
+                                slidesPerView: 3
+                            },
+                            768: {
+                                slidesPerView: 4,
+                                spaceBetween: 150,
+                            },
+                            1024: {
+                                slidesPerView: 5,
+                                spaceBetween: 20,
+                            },
+                            1200: {
+                                slidesPerView: 6,
+                                spaceBetween: 30,
+                            },
                         },
                     });   
                 });
@@ -134,11 +147,21 @@
                         scrollbar: '.swiper2 .swiper-scrollbar',
 
                         breakpoints: {
-                            320: 3,
-                            480: 3,
-                            768: 4,
-                            1024: 4,
-                            1200: 7,
+                            320: {
+                                slidesPerView: 3
+                            },
+                            480: {
+                                slidesPerView: 3
+                            },
+                            768: {
+                                slidesPerView: 4
+                            },
+                            1024: {
+                                slidesPerView: 4
+                            },
+                            1200: {
+                                slidesPerView: 7
+                            },
                         },
                     });   
                 });
