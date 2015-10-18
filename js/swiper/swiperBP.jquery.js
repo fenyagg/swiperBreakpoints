@@ -232,7 +232,7 @@
             return true;
         }
         //get breakpoint for window width
-        s.getActiveBreakpoint = function (breakpointsInner) {
+        function getActiveBreakpoint (breakpointsInner) {
           if ( typeof breakpointsInner === 'undefined' || isEmptyObj(breakpointsInner)) return false;
 
           var bpForWidth = false,
@@ -261,31 +261,13 @@
             return e;
         };
 
-        var activeBreakpoint = s.getActiveBreakpoint(s.params.breakpoints);
+        s.savedBP = false;
+        var activeBreakpoint = getActiveBreakpoint(s.params.breakpoints);
         if(activeBreakpoint){
-
             for( var param in s.params.breakpoints[activeBreakpoint] ) {
                 s.params[param] = s.params.breakpoints[activeBreakpoint][param];
             }
-
-            var ifResized = false;
-            setInterval(function() {
-              if ( ifResized ) {
-                activeBreakpoint = s.getActiveBreakpoint(s.params.breakpoints);
-                var anyParamChanged = false;
-                for( var param in s.params.breakpoints[activeBreakpoint] ) {
-                    if(s.params[param] != s.params.breakpoints[activeBreakpoint][param]){
-                        s.params[param] = s.params.breakpoints[activeBreakpoint][param];
-                        anyParamChanged = 1;
-                    }                                        
-                }
-                if ( anyParamChanged ) s.update();
-              }
-            ifResized = false;
-            }, 300);
-            window.addEventListener("resize", function() {
-                ifResized = true;
-            });
+            s.savedBP = activeBreakpoint;
         }
         
 
@@ -1010,6 +992,17 @@
             var allowSwipeToPrev = s.params.allowSwipeToPrev;
             var allowSwipeToNext = s.params.allowSwipeToNext;
             s.params.allowSwipeToPrev = s.params.allowSwipeToNext = true;
+
+            //breakpoints             
+            activeBreakpoint = getActiveBreakpoint(s.params.breakpoints);            
+            if(activeBreakpoint && (s.savedBP !== activeBreakpoint)){                
+               for( var param in s.params.breakpoints[activeBreakpoint] ) {
+                    if(s.params[param] != s.params.breakpoints[activeBreakpoint][param]){
+                        s.params[param] = s.params.breakpoints[activeBreakpoint][param];
+                    }                                        
+                }
+                s.savedBP = activeBreakpoint;
+            }
         
             s.updateContainerSize();
             s.updateSlidesSize();
